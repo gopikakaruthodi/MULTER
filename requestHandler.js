@@ -64,7 +64,7 @@ export async function updateUser(req,res) {
         if(photo)
             await fs.unlink(fullpath)
 
-        await photoSchema.updateOne({username,email,photo}).then(()=>{
+        await photoSchema.updateOne({_id},{$set:{username,email,photo}}).then(()=>{
             res.status(201).send({msg:"Updated successfully"})
         }).catch((error)=>{
             res.status(404).send({msg:error})
