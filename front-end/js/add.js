@@ -25,3 +25,20 @@ document.getElementById("frm").addEventListener("submit",async(e)=>{
         
     })
 })
+
+
+function changePic() {
+    const fileInput = document.getElementById("profile");
+    const profileImage = document.getElementById("pro");
+  
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = function(e) {
+        profileImage.src = e.target.result;
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  }

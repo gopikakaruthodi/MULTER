@@ -9,7 +9,7 @@ async function getUser() {
         console.log(user.photo);
         str+=`<div class="product-card">
             <div class="image-container">
-                <img src="http://localhost:3000/api/image/${user.photo.filename}" alt="Morning Set">
+                <img src="http://localhost:3000/api/image/${user.photo.filename}" alt=" no image">
             </div>
             <div class="product-info">
                 <h2>${user.username}</h2>

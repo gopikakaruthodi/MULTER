@@ -2,6 +2,7 @@ const url=window.location.href
 const urlParams=new URLSearchParams(url.split("?")[1])
 const id=urlParams.get("id")
 let user
+// let photo=`http://localhost:3000/api/image/${user.photo.filename}`
 
 async function getUser() {
     const res=await fetch(`http://localhost:3000/api/getuser/${id}`)
@@ -10,7 +11,7 @@ async function getUser() {
     
     document.getElementById("username").value=`${user.username}`
     document.getElementById("email").value=`${user.email}`
-    document.getElementById("img").innerHTML=`<img src="http://localhost:3000/api/image/${user.photo.filename}" alt="" >`
+    document.getElementById("img").innerHTML=`<img src="http://localhost:3000/api/image/${user.photo.filename}" alt="" id="pro">`
     
 }
 getUser()
@@ -45,3 +46,19 @@ document.getElementById("frm").addEventListener("submit",async(e)=>{
     
 
 })
+
+function changePic() {
+    const fileInput = document.getElementById("profile");
+    const profileImage = document.getElementById("pro");
+  
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = function(e) {
+        profileImage.src = e.target.result;
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  }
